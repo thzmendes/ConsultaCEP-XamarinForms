@@ -7,11 +7,11 @@
              x:Class="ConsultarCEP.MainPage">
 
     <StackLayout BackgroundColor="Yellow" Padding="30" Spacing="30">
-        <Image Source="Logo.png" ></Image>
-        <Entry Placeholder="Insira o CEP" PlaceholderColor="Black" BackgroundColor="White"></Entry>
-        <Button Text="Buscar CEP" TextColor="White" BackgroundColor="#00416B"></Button>
+        <Image Source="Logo.png" x:Name="Image"></Image>
+        <Entry Placeholder="Insira o CEP" PlaceholderColor="Black" BackgroundColor="White" x:Name="CEP"></Entry>
+        <Button Text="Buscar CEP" TextColor="White" BackgroundColor="#00416B" x:Name="Button"></Button>
         <!-- Place new controls here -->
-        <Label Text="" 
+        <Label Text="" x:Name="Output" FontSize="Medium"
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
     </StackLayout>
