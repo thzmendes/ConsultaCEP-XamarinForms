@@ -27,10 +27,28 @@ namespace ConsultarCEP
         {
             string cep = CEP.Text;
             cep.Trim();
-           Address address = ViaCepService.BuscarEnderecoViaCEP(cep);
-           Output.Text= string.Format("ENDEREÇO\nEstado: {0} \nCidade: {1}\nLogradouro: {2} \nBairro: {3}"
-               , address.uf,address.localidade,address.logradouro, address.bairro);
-           
+            if (IsValidCEP(cep))
+            {
+                Address address = ViaCepService.BuscarEnderecoViaCEP(cep);
+                Output.Text = string.Format("ENDEREÇO\nEstado: {0} \nCidade: {1}\nLogradouro: {2} \nBairro: {3}"
+                    , address.uf, address.localidade, address.logradouro, address.bairro);
+            }
+        }
+        private bool IsValidCEP(string cep)
+        {
+            bool valid = true;
+            if (cep.Length != 8)
+            { //error 
+                DisplayAlert("Erro","CEP Inválido! O CEP deve conter 8 caracteres","OK");
+                valid = false;
+            }
+            int newCEP = 0 ;
+            if(!int.TryParse(cep,out newCEP))
+            {
+                DisplayAlert("Erro","CEP Inválido! O CEP deve conter apenas números", "OK");
+                valid = false;
+            }
+            return valid;
         }
     }
 }
