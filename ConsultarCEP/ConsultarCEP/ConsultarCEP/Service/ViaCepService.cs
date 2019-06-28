@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Net;
-using ConsultarCEP.Service.Model;
+﻿using ConsultarCEP.Service.Model;
 using Newtonsoft.Json;
-
+using System.Net;
 
 namespace ConsultarCEP.Service
 {
@@ -14,11 +10,11 @@ namespace ConsultarCEP.Service
 
         public static Address BuscarEnderecoViaCEP(string cep)
         {
-            string NovaURL = string.Format(EnderecoURL,cep);
+            string NovaURL = string.Format(EnderecoURL, cep);
             WebClient wc = new WebClient();
             string content = wc.DownloadString(NovaURL);
             Address address = JsonConvert.DeserializeObject<Address>(content);
-            return address;
+            return address.cep == null ? null : address;
         }
     }
 }

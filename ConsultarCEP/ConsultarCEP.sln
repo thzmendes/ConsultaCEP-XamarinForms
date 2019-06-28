@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultarCEP.Android", "Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultarCEP.iOS", "ConsultarCEP\ConsultarCEP.iOS\ConsultarCEP.iOS.csproj", "{C6374A1A-2A1E-4E65-94B0-C5CC7DB5CACF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultarCEP", "ConsultarCEP\ConsultarCEP\ConsultarCEP.csproj", "{2C1849C0-2AE6-45C9-A4E9-5FC20B538EA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsultarCEP", "ConsultarCEP\ConsultarCEP\ConsultarCEP.csproj", "{2C1849C0-2AE6-45C9-A4E9-5FC20B538EA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

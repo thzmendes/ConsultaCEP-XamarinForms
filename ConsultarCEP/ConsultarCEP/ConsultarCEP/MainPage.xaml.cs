@@ -27,11 +27,23 @@ namespace ConsultarCEP
         {
             string cep = CEP.Text;
             cep.Trim();
-            if (IsValidCEP(cep))
+            try
             {
-                Address address = ViaCepService.BuscarEnderecoViaCEP(cep);
-                Output.Text = string.Format("ENDEREÇO\nEstado: {0} \nCidade: {1}\nLogradouro: {2} \nBairro: {3}"
-                    , address.uf, address.localidade, address.logradouro, address.bairro);
+                if (IsValidCEP(cep))
+                {
+
+                    Address address = ViaCepService.BuscarEnderecoViaCEP(cep);
+                    if (address != null)
+                    {
+                        Output.Text = string.Format("ENDEREÇO\nEstado: {0} \nCidade: {1}\nLogradouro: {2} \nBairro: {3}"
+                        , address.uf, address.localidade, address.logradouro, address.bairro);
+                    }
+                    DisplayAlert("Erro: ", "CEP Inexistente", "OK");
+                }
+            }
+            catch (Exception e)
+            {
+                DisplayAlert("Erro Crítico!", e.Message, "OK");
             }
         }
         private bool IsValidCEP(string cep)
@@ -39,13 +51,13 @@ namespace ConsultarCEP
             bool valid = true;
             if (cep.Length != 8)
             { //error 
-                DisplayAlert("Erro","CEP Inválido! O CEP deve conter 8 caracteres","OK");
+                DisplayAlert("Erro", "CEP Inválido! O CEP deve conter 8 caracteres", "OK");
                 valid = false;
             }
-            int newCEP = 0 ;
-            if(!int.TryParse(cep,out newCEP))
+            int newCEP = 0;
+            if (!int.TryParse(cep, out newCEP))
             {
-                DisplayAlert("Erro","CEP Inválido! O CEP deve conter apenas números", "OK");
+                DisplayAlert("Erro", "CEP Inválido! O CEP deve conter apenas números", "OK");
                 valid = false;
             }
             return valid;
